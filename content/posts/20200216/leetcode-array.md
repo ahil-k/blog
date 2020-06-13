@@ -6,7 +6,7 @@ images:
   - https://picsum.photos/1024/768/?random
 tags: 
   - leetcode
-  - migrate-from-hexo
+  - migrate-to-hugo
 ---
 
 go 一下 leetcode 上4道 array 相关的 medium 题\
