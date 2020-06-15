@@ -756,6 +756,16 @@ a.footnote-ref {
   }
 }
 
+.btn-aside {
+  display: none;
+  position: fixed;
+  left: 50%;
+  top: 38em;
+  margin-left: 600px;
+  div {
+      cursor: pointer;
+  }
+}
 
 // Media Queries
 //
@@ -781,6 +791,7 @@ a.footnote-ref {
   }
 
   .desktop-only,
+  .btn-aside,
   #toc.show-toc {
     display: block;
   }

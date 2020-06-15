@@ -100,3 +100,8 @@ if (header !== null) {
     }
   }, 250));
 }
+
+// to-top button
+document.querySelector('.btn-aside .btn-scroll-top').addEventListener('click', () => {
+  document.documentElement.scrollTop = 0;
+});
