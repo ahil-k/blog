@@ -2,8 +2,6 @@
 title: leetcode上4道array相关的medium题
 date: 2020-02-16T12:32:20+08:00
 draft: false
-images: 
-  - https://picsum.photos/1024/768/?random
 tags: 
   - leetcode
   - migrate-to-hugo

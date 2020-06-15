@@ -2,8 +2,6 @@
 title: "Migrate to Hugo"
 date: 2020-06-13T16:38:14+08:00
 draft: false
-images: 
-  - https://picsum.photos/1024/768/?random
 tags: 
   - migrate-to-hugo
 ---

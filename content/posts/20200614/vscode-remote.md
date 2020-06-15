@@ -2,8 +2,6 @@
 title: "用VS code在免费remote VM上看K8s源码"
 date: 2020-06-14T20:34:30+08:00
 draft: false
-images:
-  - https://picsum.photos/1024/768/?random
 tags: 
   - kubernetes
   - source-code
