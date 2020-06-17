@@ -1,11 +1,37 @@
+@mixin dark {
+  --color-theme: #018574;
+  --color-text: #e8eef2;
+  --color-light-grey: #28282c;
+  --color-dark-grey: #2a2a2e;
+  --color-highlight-grey: #7d828a;
+  --color-midnightblue: #2c3e50;
+}
+
+@mixin light {
+  --color-theme: #018574;
+  --color-text: #2a2a2e;
+  --color-light-grey: light(#dee7ec, 6%);
+  --color-dark-grey: light(#dee7ec, 3%);
+  --color-highlight-grey: #7d828a;
+  --color-midnightblue: #2c3e50;
+}
+
+body[data-theme='light'] {
+  @include light();
+}
+
+body[data-theme='dark'] {
+  @include dark();
+}
+
 // Colors
 //
-$theme: #018574;
-$text: #e8eef2;
-$light-grey: darken(#2a2a2e, 3%);
-$dark-grey: #2a2a2e;
-$highlight-grey: #7d828a;
-$midnightblue: #2c3e50;
+$theme: var(--color-theme);
+$text: var(--color-text);
+$light-grey: var(--color-light-grey);
+$dark-grey: var(--color-dark-grey);
+$highlight-grey: var(--color-highlight-grey);
+$midnightblue: var(--color-midnightblue);
 
 // Fonts
 //
