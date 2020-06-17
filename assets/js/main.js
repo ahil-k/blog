@@ -102,6 +102,12 @@ if (header !== null) {
 }
 
 // to-top button
-document.querySelector('.btn-aside .btn-scroll-top').addEventListener('click', () => {
-  document.documentElement.scrollTop = 0;
-});
+let toTop = document.querySelector('.to-top');
+
+if (toTop !== null) {
+
+  toTop.addEventListener('click', () => {
+    document.documentElement.scrollTop = 0;
+  });
+
+}

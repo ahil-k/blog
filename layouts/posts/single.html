@@ -53,9 +53,9 @@
 			<div class="toc-title">{{ i18n "tableOfContents" }}</div>
 			{{ .TableOfContents }}
 		</aside>
-		<aside class="btn-aside">
-			<div class="btn-scroll-top">top</div>
-		</aside>
+		<div class="to-top">
+			<i>{{ partial "svg.html" (dict "name" "to-top") }}</i>
+		</div>
 		{{- end }}
 		<div class="post-nav thin">
 			{{- with .NextInSection }}

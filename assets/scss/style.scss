@@ -679,6 +679,22 @@ a.footnote-ref {
   }
 }
 
+.to-top {
+  display: none;
+  position: fixed;
+  right: 5.5em;
+  bottom: 2em;
+  transition-property: transform;
+  transition-timing-function: ease-out;
+  transition-duration: 0.3s;
+  z-index: 10;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
+
 #toc {
   position: fixed;
   left: 50%;
@@ -756,17 +772,6 @@ a.footnote-ref {
   }
 }
 
-.btn-aside {
-  display: none;
-  position: fixed;
-  left: 50%;
-  top: 38em;
-  margin-left: 600px;
-  div {
-      cursor: pointer;
-  }
-}
-
 // Media Queries
 //
 @media (min-width: 800px) {
@@ -791,7 +796,7 @@ a.footnote-ref {
   }
 
   .desktop-only,
-  .btn-aside,
+  .to-top,
   #toc.show-toc {
     display: block;
   }
