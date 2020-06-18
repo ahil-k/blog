@@ -97,8 +97,8 @@ a {
   transition-timing-function: ease-out;
 
   &:hover {
-    color: #fff;
-    text-shadow: 0 0 1px #fff;
+    color: $text;
+    text-shadow: 0 0 1px $text;
   }
 }
 
