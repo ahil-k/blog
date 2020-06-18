@@ -19,10 +19,13 @@
 }
 
 html {
-  background: $light-grey;
   line-height: 1.6;
   letter-spacing: .06em;
   scroll-behavior: smooth;
+}
+
+body {
+  background-color: $light-grey;
 }
 
 body,
@@ -693,6 +696,13 @@ a.footnote-ref {
   &:hover {
     transform: translateY(-5px);
   }
+}
+
+#theme-btn.dark > .moon {
+  display: none;
+}
+#theme-btn.light > .sun {
+  display: none;
 }
 
 #toc {
