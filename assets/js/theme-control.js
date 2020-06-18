@@ -1,5 +1,43 @@
+var themeMap = new Map([
+    [NaN, 'photon-dark'],
+    ['dark', 'photon-dark'], 
+    ['light', 'github-light'],
+]);
 
-setTheme(getTheme());
+var theme = getTheme();
+setTheme(theme);
+if (document.getElementById('comments')) {
+    // refer to https://github.com/utterance/utterances/issues/170
+    // wait for utterances to load and send it's first message.
+    addEventListener('message', event => {
+        if (event.origin !== 'https://utteranc.es') {
+            return;
+        }
+        doPostUtterances(theme);
+    });
+}
+
+var theme_btn = document.getElementById('theme-btn');
+if (theme_btn) {
+    theme_btn.addEventListener('click', () => {
+        var theme = rev(getTheme());
+        setTheme(theme);
+        theme_btn.classList.toggle('dark');
+        theme_btn.classList.toggle('light');
+        if (document.getElementById('comments')) {
+            doPostUtterances(theme);
+        }
+    });
+}
+
+function doPostUtterances(theme) {
+    const message = {
+        type: 'set-theme',
+        theme: themeMap.get(theme)
+    };
+    const utterances = document.querySelector('iframe').contentWindow;
+    utterances.postMessage(message, 'https://utteranc.es'); // try event.source instead
+}
 
 function getTheme() {
     let curTheme = document.body.getAttribute('data-theme');
@@ -12,77 +50,6 @@ function getTheme() {
 function setTheme(theme) {
     document.body.setAttribute('data-theme', theme);
     window.localStorage.setItem("data-theme", theme);
-}
-
-// theme control button
-var theme_btn = document.getElementById('theme-btn');
-if (theme_btn) {
-    theme_btn.addEventListener('click', () => {
-        setTheme(rev(getTheme()));
-        theme_btn.classList.toggle('dark');
-        theme_btn.classList.toggle('light');
-
-        // let nowTheme = getNowTheme();
-        // let domTheme = document.body.getAttribute('data-theme');
-        // let systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    
-        // if (domTheme === 'auto') {
-        //     // if now in auto mode, switch to user mode
-        //     document.body.setAttribute('data-theme', nowTheme === 'light' ? 'dark' : 'light');
-        //     localStorage.setItem('fuji_theme', nowTheme === 'light' ? 'dark' : 'light');
-        // } else if (domTheme === 'light') {
-        //     // if now in user mode and light mode
-        //     document.body.setAttribute('data-theme', 'dark');
-        //     // if the theme want to switch is system theme
-        //     localStorage.setItem('fuji_theme', systemTheme === 'dark' ? 'auto' : 'dark');
-        // } else {
-        //     // if now in user mode and dark mode
-        //     document.body.setAttribute('data-theme', 'light');
-        //     // if the theme want to switch is system theme
-        //     localStorage.setItem('fuji_theme', systemTheme === 'light' ? 'auto' : 'light');
-        // }
-    
-        // // switch comment area theme
-        // // if this page has comment area
-        // let commentArea = document.querySelector('.post-comment');
-        // if (commentArea) {
-        //     // if comment area loaded
-        //     if (document.querySelector('span.post-comment-notloaded').getAttribute('style')) {
-        //         if (commentArea.getAttribute('data-comment') === 'utterances') {
-        //             updateUtterancesTheme(document.querySelector('.post-comment iframe'));
-        //         }
-        //         if (commentArea.getAttribute('data-comment') === 'disqus') {
-        //             DISQUS.reset({
-        //                 reload: true,
-        //             });
-        //         }
-        //     }
-        // }
-
-    });
-}
-
-function updateUtterancesTheme(utterancesFrame) {
-    let targetTheme = getNowTheme();
-    if (utterancesFrame) {
-        if (targetTheme === 'dark') {
-            utterancesFrame.contentWindow.postMessage(
-                {
-                    type: 'set-theme',
-                    theme: 'photon-dark',
-                },
-                'https://utteranc.es'
-            );
-        } else {
-            utterancesFrame.contentWindow.postMessage(
-                {
-                    type: 'set-theme',
-                    theme: 'github-light',
-                },
-                'https://utteranc.es'
-            );
-        }
-    }
 }
 
 function rev(theme) {
