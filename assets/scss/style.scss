@@ -698,6 +698,13 @@ a.footnote-ref {
   }
 }
 
+#theme-btn.dark > .moon {
+  display: none;
+}
+#theme-btn.light > .sun {
+  display: none;
+}
+
 #toc {
   position: fixed;
   left: 50%;

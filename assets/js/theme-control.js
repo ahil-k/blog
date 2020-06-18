@@ -1,3 +1,6 @@
+function rev(theme) {
+    return theme === 'light' ? 'dark' : 'light';
+}
 
 function code(theme) {
     return theme === 'light' ? 'light' : 'dark';
@@ -38,15 +41,13 @@ function updateUtterancesTheme(utterancesFrame) {
 }
 
 // theme control button
-var theme_control = document.getElementById('theme-btn');
-if (true) {
-    theme_control.addEventListener('click', () => {
-        let tc = document.body.getAttribute('data-theme');
-        if (code(tc) === 'dark') {
-            document.body.setAttribute('data-theme', 'light');
-        } else {
-            document.body.setAttribute('data-theme', 'dark');
-        }
+var theme_btn = document.getElementById('theme-btn');
+if (theme_btn) {
+    theme_btn.addEventListener('click', () => {
+        let current_theme = document.body.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', rev(code(current_theme)));
+        theme_btn.classList.toggle('dark');
+        theme_btn.classList.toggle('light');
 
         // let nowTheme = getNowTheme();
         // let domTheme = document.body.getAttribute('data-theme');
